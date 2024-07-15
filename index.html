@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Ar Condicionado</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Simulador de Ar Condicionado</h1>
+        <form id="ac-simulator-form">
+            <div id="zones-container">
+                <div class="zone">
+                    <label for="zone1-area">Área da Zona 1 (m²):</label>
+                    <input type="number" id="zone1-area" name="zone1-area" required>
+                </div>
+            </div>
+            <button type="button" id="add-zone-btn">Adicionar Zona</button>
+            <button type="submit">Calcular</button>
+        </form>
+        <div id="results"></div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

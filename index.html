@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,13 +10,30 @@
     <div class="container">
         <h1>Simulador de Ar Condicionado</h1>
         <form id="ac-simulator-form">
-            <div id="zones-container">
-                <div class="zone">
-                    <label for="zone1-area">Área da Zona 1 (m²):</label>
-                    <input type="number" id="zone1-area" name="zone1-area" required>
-                </div>
+            <div class="form-group">
+                <label for="tipo-ambiente">Tipo de Ambiente:</label>
+                <select id="tipo-ambiente" name="tipo-ambiente" required>
+                    <option value="residencial">Residencial</option>
+                    <option value="comercial">Comercial</option>
+                    <option value="outro">Outro</option>
+                </select>
             </div>
-            <button type="button" id="add-zone-btn">Adicionar Zona</button>
+            <div class="form-group">
+                <label for="tamanho">Tamanho do Espaço (m²):</label>
+                <input type="number" id="tamanho" name="tamanho" required>
+            </div>
+            <div class="form-group">
+                <label for="num-pessoas">Número de Pessoas:</label>
+                <input type="number" id="num-pessoas" name="num-pessoas" required>
+            </div>
+            <div class="form-group">
+                <label for="exposicao">Exposição ao Sol:</label>
+                <select id="exposicao" name="exposicao" required>
+                    <option value="muito">Muito</option>
+                    <option value="medio">Médio</option>
+                    <option value="pouco">Pouco</option>
+                </select>
+            </div>
             <button type="submit">Calcular</button>
         </form>
         <div id="results"></div>

@@ -1,35 +1,32 @@
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('ac-simulator-form');
-    const zonesContainer = document.getElementById('zones-container');
-    const addZoneBtn = document.getElementById('add-zone-btn');
-    let zoneCount = 1;
-
-    addZoneBtn.addEventListener('click', function() {
-        zoneCount++;
-        const newZone = document.createElement('div');
-        newZone.classList.add('zone');
-        newZone.innerHTML = `
-            <label for="zone${zoneCount}-area">Área da Zona ${zoneCount} (m²):</label>
-            <input type="number" id="zone${zoneCount}-area" name="zone${zoneCount}-area" required>
-        `;
-        zonesContainer.appendChild(newZone);
-    });
 
     form.addEventListener('submit', function(event) {
         event.preventDefault();
-        let totalBTUs = 0;
-
-        for (let i = 1; i <= zoneCount; i++) {
-            const area = parseFloat(document.getElementById(`zone${i}-area`).value);
-            if (!isNaN(area)) {
-                totalBTUs += area * 600;
-            }
+        
+        let tipoAmbiente = document.getElementById('tipo-ambiente').value;
+        let tamanho = parseFloat(document.getElementById('tamanho').value);
+        let numPessoas = parseInt(document.getElementById('num-pessoas').value);
+        let exposicao = document.getElementById('exposicao').value;
+        
+        // Cálculo de BTUs
+        let btus = tamanho * 600 + numPessoas * 600;
+        if (exposicao === 'muito') {
+            btus += 500;
+        } else if (exposicao === 'pouco') {
+            btus -= 500;
         }
 
-        const results = document.getElementById('results');
-        results.innerHTML = `
-            <h2>Resultados</h2>
-            <p>BTUs Necessários: ${totalBTUs}</p>
+        // Resultados (exemplo)
+        const resultados = `
+            <h2>Resultados da Simulação</h2>
+            <p>BTUs Necessários: ${btus}</p>
+            <h4>Produtos Sugeridos:</h4>
+            <ul>
+                <li>Modelo X - 12000 BTUs - €2000,00</li>
+                <li>Modelo Y - 18000 BTUs - €3000,00</li>
+            </ul>
         `;
+        document.getElementById('results').innerHTML = resultados;
     });
 });
